@@ -1,11 +1,11 @@
-FROM python:3-slim AS build-env
+# Use the official Python image as the base image
+FROM python:3
 
-COPY . /app
-# Install the Python dependencies (if you have any)
-
+# Set the working directory inside the container
 WORKDIR /app
 
-FROM gcr.io/distroless/python3
-COPY --from=build-env /app /app
-WORKDIR /app
-CMD ["python3" , "rock_paper_scissors2.py"]
+# Copy the game code into the container
+COPY rock_paper_scissors2.py /app/
+
+# Run the game when the container starts
+CMD ["python3", "rock_paper_scissors2.py"]
