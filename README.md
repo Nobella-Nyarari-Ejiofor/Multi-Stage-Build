@@ -14,7 +14,7 @@ git clone https://github.com/Nobella-Nyarari-Ejiofor/Multi-Stage-Build.git
 ```
 
 ## Usage
-In the master branch you can see 2 folders : [multi-stage-build](https://github.com/Nobella-Nyarari-Ejiofor/Multi-Stage-Build/tree/master/multi-stage-build) and [without-multi-stage-build](https://github.com/Nobella-Nyarari-Ejiofor/Multi-Stage-Build/tree/master/without-multi-stage-build) . The folders contain a docker file and a small application called rock-paper-scissors for the image creation.
+In the master branch you can see 2 folders : [with-multi-stage-build](https://github.com/Nobella-Nyarari-Ejiofor/Multi-Stage-Build/tree/master/multi-stage-build) and [without-multi-stage-build](https://github.com/Nobella-Nyarari-Ejiofor/Multi-Stage-Build/tree/master/without-multi-stage-build) . The folders contain a docker file and a small application called rock-paper-scissors for the image creation.
 
 ## Contributing
 
