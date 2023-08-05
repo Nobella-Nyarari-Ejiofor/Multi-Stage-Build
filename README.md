@@ -1,36 +1,23 @@
-# Foobar
+# Docker Multi-Stage Build 
 
-Foobar is a Python library for dealing with word pluralization.
+Docker's multi-stage capability is critical for creating leaner container images, which optimizes image sizes and resource efficiency. Developers can use this capability to isolate their build environments from their runtime environments, copying only the necessary artifacts to the final runtime image.
 
-## Installation
+Multi-stage builds substantially reduce size by reducing build-time dependencies, resulting in faster downloads, fewer storage requirements, and increased security.
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Let's get into a practical example.
+
+## Getting Started
+To do this practically on your CLI :
 
 ```bash
-pip install foobar
+git clone https://github.com/Nobella-Nyarari-Ejiofor/Multi-Stage-Build.git
 ```
 
 ## Usage
-
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
+In the master branch you can see 2 folders : [multi-stage-build](https://github.com/Nobella-Nyarari-Ejiofor/Multi-Stage-Build/tree/master/multi-stage-build) and [without-multi-stage-build](https://github.com/Nobella-Nyarari-Ejiofor/Multi-Stage-Build/tree/master/without-multi-stage-build) . The folders contain a docker file and a small application called rock-paper-scissors for the image creation.
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
 
 ## License
 
