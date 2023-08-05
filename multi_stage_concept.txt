@@ -1,0 +1,55 @@
+So here : The benefits of multi-stage builds is that it helps reduce the image size significantly :
+How ? right 
+So here's an example 
+
+###########################################
+# BASE IMAGE
+###########################################
+
+FROM ubuntu AS build
+
+RUN apt-get update && apt-get install -y golang-go
+
+ENV GO111MODULE=off
+
+COPY . .
+
+RUN CGO_ENABLED=0 go build -o /app .
+
+ENTRYPOINT ["/app"]
+
+
+So first of all we need Ubuntu as the base image as it has many binaries that help our app run . But in our final image it is bulky , why ? we have all if not most of ubuntu binaries that we do not need ,
+we only need binaries associated to golang right ?
+
+Distroless Docker Images
+========================
+A distroless image is a  minimalistic image or light-weight image  that only contains only the runtime artefacts . 
+A python distroless image will only have a python runtime like you can't perform basic shell commands ie ls , find , depends. Like we only need to excecute the /app for python , you gerrit? 
+For example a golang application is a static type app (that fdoesn't require a GO runtime )- hence the docker image is reduced to a smaller size . 
+
+So for these images you might not be able to run things like ls 
+So other than reducing container size you also increase security .
+
+Interview example: 
+1. What are the issues you have faced with Docker containers? So we basically had an ubuntu base image  or in final image which would expose us to vulnerabilities by hackers , we switched to distroless images ie  a python base image with only python runtime 
+and now you  can't run like shell commands . So now we can't be exposed to any OS vulnerabilities . They are 99% if you use apps like golang which don't need a runtime , different value for Python .
+
+So you can say why not use a minimal ubuntu image as initital build right ? or a golang image ? That wouldn't hel as multistage builds will .
+
+Note stage 1: Dedicated to the build steps 
+The final stage is where you put the ENTRYPOINT or CMD 
+
+COPY --from
+
+
+FROM DOCS 
+=========
+Traditionally to keey the docker size image down it required to manually clean up resources from image to keep it small . 
+With multi-stage builds , you use multiple FROM statements in your Dockerfile . Each FROM instruction can use a different base and each of them begins a new stage of the build. 
+You can selectively copy artificats from one stage to the other leaving behind everything you don't want in the final image .
+
+THe second FROM instruction starts a new buid stage with the image as its base . The COPY --from=0 line just copies the built artefact from the previous stage to the new stage . The 
+software developement kit and any intermediate artifacts are left behind and not saved in the final image .
+
+By default the first 
